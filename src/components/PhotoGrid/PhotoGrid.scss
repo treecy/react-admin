@@ -1,0 +1,17 @@
+.grid-list{
+  display: flex;
+  flex-wrap: wrap;
+
+  &>li{
+    flex: 1 1 25%;
+    list-style: none;
+
+    .img-wrap{
+      height: 200px;
+      overflow: hidden;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
