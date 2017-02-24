@@ -3,54 +3,59 @@
   left: 0;
   position: fixed;
   height: 100%;
-  background: #fff;
+  background-color: #151d28;
   width: 250px;
   overflow: hidden;
   transition: width 0.4s;
   margin-top: 50px;
   z-index: 99;
+  &:before{
+    background: rgba(0, 0, 0, 0.06);
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &>ul:after{
+    content: '';
+    display: block;
+    height: 60px;
+  }
 }
-.accordion-menu-wrapper:before{
-  background: rgba(0, 0, 0, 0.06);
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+
+.accordion-menu{
+  .menu-text{
+    padding: 0 20px 0 0;
+    /* white-space: normal; */
+    display: inline-block;
+    font-family: "Noto Sans Japanese", sans-serif;
+    font-weight: 100;
+  }
+  li>a {
+    color: rgba(255, 255, 255, 0.6);
+    padding: 1.2rem 1rem;
+    white-space: nowrap;
+    min-width: 100px;
+  }
+  li a:hover{
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: rgba(255,255,255,.02);
+    border-right: 2px solid;
+  }
+  li a:hover .fa-angle-down{
+    margin-right: -2px;
+  }
+  a::after {
+    display: none;
+  }
+  .fa-angle-down{
+    display: none;
+  }
 }
-.accordion-menu-wrapper>ul:after{
-  content: '';
-  display: block;
-  height: 60px;
-}
-[data-accordion-menu] .menu-text{
-  padding: 0 20px 0 0;
-  /* white-space: normal; */
-  display: inline-block;
-  font-family: "Noto Sans Japanese", sans-serif;
-  font-weight: 100;
-}
-[data-accordion-menu] li>a {
-  color: #333;
-  padding: 1.2rem 1rem;
-  white-space: nowrap;
-  min-width: 100px;
-}
-[data-accordion-menu] li a:hover{
-  text-decoration: none;
-  color: #CD4343;
-  border-right: 2px solid;
-}
-[data-accordion-menu] li a:hover .fa-angle-down{
-  margin-right: -2px;
-}
-[data-accordion-menu] a::after {
-  display: none;
-}
-[data-accordion-menu] .fa-angle-down{
-  display: none;
-}
+
 .is-accordion-submenu-parent>a .fa-angle-down{
   display: inline-block;
   margin-left: 10px;
