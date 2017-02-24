@@ -1,0 +1,143 @@
+.accordion-menu-wrapper{
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  background: #fff;
+  width: 250px;
+  overflow: hidden;
+  transition: width 0.4s;
+  margin-top: 50px;
+  z-index: 99;
+}
+.accordion-menu-wrapper:before{
+  background: rgba(0, 0, 0, 0.06);
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.accordion-menu-wrapper>ul:after{
+  content: '';
+  display: block;
+  height: 60px;
+}
+[data-accordion-menu] .menu-text{
+  padding: 0 20px 0 0;
+  /* white-space: normal; */
+  display: inline-block;
+  font-family: "Noto Sans Japanese", sans-serif;
+  font-weight: 100;
+}
+[data-accordion-menu] li>a {
+  color: #333;
+  padding: 1.2rem 1rem;
+  white-space: nowrap;
+  min-width: 100px;
+}
+[data-accordion-menu] li a:hover{
+  text-decoration: none;
+  color: #CD4343;
+  border-right: 2px solid;
+}
+[data-accordion-menu] li a:hover .fa-angle-down{
+  margin-right: -2px;
+}
+[data-accordion-menu] a::after {
+  display: none;
+}
+[data-accordion-menu] .fa-angle-down{
+  display: none;
+}
+.is-accordion-submenu-parent>a .fa-angle-down{
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 0;
+  position: absolute;
+  right: 15px;
+  transition: transform 0.5s;
+}
+.is-accordion-submenu-parent[aria-expanded="true"]>a .fa-angle-down{
+  transform: rotate(180deg);
+}
+
+.is-accordion-submenu-parent .sublevel-1{
+  background: rgba(0,0,0,.05);
+  font-size: 12px;
+}
+.is-accordion-submenu-parent .is-accordion-submenu a{
+  padding: 1rem;
+}
+[data-accordion-menu] a.is-current{
+  background-color: #CD4343;
+  color: #fff;
+  font-weight: bold;
+}
+[data-accordion-menu] a.is-current:before,
+[data-accordion-menu] a.is-current:hover{
+  color: #fff;
+}
+[data-accordion-menu]>.is-accordion-submenu-parent[aria-expanded="true"]>a{
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,.1);
+  position: relative;
+  z-index: 1;
+}
+
+[data-accordion-menu]>li>a::before {
+  font-family: FontAwesome;
+  padding: 0 6px;
+  color: #CD4343;
+  font-size: 16px;
+  vertical-align: middle;
+}
+[data-accordion-menu]>li:nth-child(1)>a:before {
+  content: '\f015';
+}
+[data-accordion-menu]>li:nth-child(2)>a:before {
+  content: '\f007';
+}
+[data-accordion-menu]>li:nth-child(3)>a:before {
+  content: '\f29e';
+}
+[data-accordion-menu]>li:nth-child(4)>a:before {
+  content: '\f00a';
+}
+[data-accordion-menu]>li:nth-child(5)>a:before {
+  content: '\f022';
+}
+[data-accordion-menu]>li:nth-child(6)>a:before {
+  content: '\f1fe';
+}
+[data-accordion-menu]>li:nth-child(7)>a:before {
+  content: '\f002';
+}
+.sublevel-1 .menu-text {
+  margin-left: 10px;;
+}
+
+.sublevel-2 .menu-text{
+  margin-left: 20px;;
+}
+
+[data-accordion-menu] .menu-text,
+[data-accordion-menu] .fa-angle-down{
+  opacity: 1;
+  /*transition: opacity 0.5s;*/
+}
+
+body.global-menu-close [data-accordion-menu] .menu-text,
+body.global-menu-close [data-accordion-menu] .fa-angle-down{
+  /*display: none;*/
+  opacity: 0;
+}
+body.global-menu-close .accordion-menu-wrapper{
+  width: 50px;
+}
+body.global-menu-close li[role="menuitem"].is-current>a{
+  background-color: #CD4343;
+}
+body.global-menu-close li[role="menuitem"].is-current>a:before{
+  color: #fff;
+}

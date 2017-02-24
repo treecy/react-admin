@@ -4,9 +4,9 @@ class Header extends React.Component {
 
     render() {
         return (
-            <nav className="pt-navbar">
+            <nav className="pt-navbar pt-dark">
                 <div className="pt-navbar-group pt-align-left">
-                    <div className="pt-navbar-heading">Blueprint</div>
+                    <div className="pt-navbar-heading">ReactAdmin</div>
                     <input className="pt-input" placeholder="Search files..." type="text" />
                 </div>
                 <div className="pt-navbar-group pt-align-right">
