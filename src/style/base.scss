@@ -1,2 +1,7 @@
 @import "~normalize.css/normalize.css";
 @import "~@blueprintjs/core/dist/blueprint.css";
+
+ul {
+  margin: 0;
+  list-style-type: none;
+}

@@ -17,6 +17,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
   }
   &>ul:after{
     content: '';
@@ -26,6 +27,7 @@
 }
 
 .accordion-menu{
+  padding: 0;
   .menu-text{
     padding: 0 20px 0 0;
     /* white-space: normal; */
@@ -38,6 +40,8 @@
     padding: 1.2rem 1rem;
     white-space: nowrap;
     min-width: 100px;
+    display: block;
+    line-height: 1;
   }
   li a:hover{
     text-decoration: none;
@@ -68,13 +72,25 @@
   transform: rotate(180deg);
 }
 
-.is-accordion-submenu-parent .sublevel-1{
-  background: rgba(0,0,0,.05);
-  font-size: 12px;
+.is-accordion-submenu-parent {
+  .sublevel-1{
+    background: rgba(0,0,0,.05);
+    font-size: 12px;
+    max-height: 0;
+    overflow-y: hidden;
+    transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    &.open{
+      max-height: 400px;
+    }
+  }
+
+  .is-accordion-submenu a{
+    padding: 1rem;
+  }
 }
-.is-accordion-submenu-parent .is-accordion-submenu a{
-  padding: 1rem;
-}
+
 [data-accordion-menu] a.is-current{
   background-color: #CD4343;
   color: #fff;

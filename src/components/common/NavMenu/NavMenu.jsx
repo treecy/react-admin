@@ -4,13 +4,26 @@ import {Link} from 'react-router';
 import './NavMenu.scss';
 
 class NavItem extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isOpen: false
+    }
+  }
+
+  handleClick (){
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
+  }
   render() {
     const nav = this.props.nav;
+    let classN = this.state.isOpen? 'open': '';
     if (nav.menus && nav.menus.length>0) {
       return (
-          <li>
-            <span className="menu-text">{nav.text}</span>
-            <ul className="vertical accordion-menu menu sub-menu">
+          <li className="is-accordion-submenu-parent">
+            <a onClick={this.handleClick.bind(this)}><span className="menu-text">{nav.text}</span></a>
+            <ul className={`accordion-menu menu sub-menu sublevel-1 ${classN}`}>
               {nav.menus.map((item,i) => <NavItem nav={item} key={i}/>)}
             </ul>
           </li>
