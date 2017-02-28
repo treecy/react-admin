@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Link} from 'react-router';
 
 import './NavMenu.scss';
+import { Collapse } from '@blueprintjs/core';
 
 class NavItem extends React.Component {
   constructor(props){
@@ -21,11 +22,14 @@ class NavItem extends React.Component {
     let classN = this.state.isOpen? 'open': '';
     if (nav.menus && nav.menus.length>0) {
       return (
-          <li className="is-accordion-submenu-parent">
+          <li className={`is-accordion-submenu-parent ${classN}`}>
             <a onClick={this.handleClick.bind(this)}><span className="menu-text">{nav.text}</span></a>
-            <ul className={`accordion-menu menu sub-menu sublevel-1 ${classN}`}>
-              {nav.menus.map((item,i) => <NavItem nav={item} key={i}/>)}
-            </ul>
+            <Collapse isOpen={this.state.isOpen}>
+              <ul className="accordion-menu menu sub-menu sublevel-1">
+                {nav.menus.map((item,i) => <NavItem nav={item} key={i}/>)}
+              </ul>
+            </Collapse>
+
           </li>
       )
     }else {
