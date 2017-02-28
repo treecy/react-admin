@@ -3,14 +3,14 @@
   left: 0;
   position: fixed;
   height: 100%;
-  background-color: #151d28;
-  width: 250px;
+  background-color: #182026;
+  width: 220px;
   overflow: hidden;
   transition: width 0.4s;
   margin-top: 50px;
   z-index: 99;
   &:before{
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.1);
     content: '';
     width: 100%;
     height: 100%;
@@ -74,21 +74,21 @@
 
 .is-accordion-submenu-parent {
   .sublevel-1{
-    background: rgba(0,0,0,.05);
+    background-color: rgba(0, 0, 0, 0.2);
     font-size: 12px;
-    max-height: 0;
-    overflow-y: hidden;
-    transition-property: all;
-	transition-duration: .5s;
-	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-    &.open{
-      max-height: 400px;
-    }
   }
 
   .is-accordion-submenu a{
     padding: 1rem;
   }
+
+  &.open>a{
+    box-shadow: 0 2px 4px 0px rgba(0,0,0,.1);
+    position: relative;
+    z-index: 1;
+  }
+
+
 }
 
 [data-accordion-menu] a.is-current{
