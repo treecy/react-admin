@@ -15,8 +15,9 @@ typeof window !== "undefined" && (window.React = React);
 Dom.render(
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={ Main }>
+            <Route path="/admin/" component={ Main }>
                 <IndexRoute component={ PhotoGrid } />
+                <Route path="/admin/dashbord" component={PhotoGrid} />
                 <Route path="/view/:postId" component={Single} />
             </Route>
         </Router>

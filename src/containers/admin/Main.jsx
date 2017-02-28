@@ -5,8 +5,8 @@ import {connect} from 'react-redux';
 
 import Header from 'components/common/Header/Header';
 import NavMenu from 'components/common/NavMenu/NavMenu';
-import * as actionCreators from '../actions/actionCreators';
-import {menus} from '../data/config';
+import * as actionCreators from '../../actions/actionCreators';
+import {menus} from '../../data/config';
 
 class MainComponent extends React.Component {
 
