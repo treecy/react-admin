@@ -50,7 +50,8 @@ class NavMenu extends React.Component {
 
   render() {
     return (
-        <div className="accordion-menu-wrapper">
+        <div className="accordion-menu-wrapper pt-dark">
+          <input className="pt-input" placeholder="Search files..." type="text" />
           <ul className="vertical accordion-menu menu">
             {this.props.menus.map((item,i) => <NavItem nav={item} key={i}/>)}
           </ul>
