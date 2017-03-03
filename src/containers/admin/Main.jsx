@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -27,7 +26,6 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     comments: state.comments,
-    menus: state.menus
   }
 }
 
@@ -39,4 +37,4 @@ function mapDispatchToProps(dispatch) {
 const Main = connect(mapStateToProps, mapDispatchToProps)(MainComponent);
 
 
-export default Main;
+export default Main

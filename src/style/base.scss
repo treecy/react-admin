@@ -1,12 +1,6 @@
 @import "~normalize.css/normalize.css";
 @import "~@blueprintjs/core/dist/blueprint.css";
+@import "~@blueprintjs/datetime/dist/blueprint-datetime.css";
 
-ul {
-  margin: 0;
-  list-style-type: none;
-}
-
-#main-conten{
-  padding-top: 50px;
-  padding-left: 220px;
-}
+@import "./global";
+@import "./admin-base";

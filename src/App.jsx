@@ -5,8 +5,8 @@ import {Route, Router, IndexRoute, IndexRedirect, browserHistory} from 'react-ro
 import {Provider} from 'react-redux';
 import store, {history} from './store';
 
-import Main from "./containers/Main";
-import Single from "components/Single/Single";
+import Main from "./containers/admin/Main";
+import Ltv from './containers/admin/Ltv';
 import PhotoGrid from "components/PhotoGrid/PhotoGrid";
 
 //for debug
@@ -18,8 +18,7 @@ Dom.render(
         <Route path="/" component={ Main }>
           <IndexRedirect to="/admin" />
           <Route path="/admin" component={PhotoGrid}/>
-          <Route path="/admin/dashbord" component={PhotoGrid}/>
-          <Route path="/view/:postId" component={Single}/>
+          <Route path="/admin/ltv" component={Ltv}/>
         </Route>
       </Router>
     </Provider>

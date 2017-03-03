@@ -41,7 +41,6 @@ class NavItem extends React.Component {
           </li>
       )
     }
-
   }
 }
 

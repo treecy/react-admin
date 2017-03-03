@@ -1,0 +1,38 @@
+#main-conten{
+  padding-top: 50px;
+  padding-left: 220px;
+
+  h2.page-title{
+    background-color: #fafafa;
+    font: 20px normal;
+    color: #333;
+    padding: 10px 20px;
+  }
+
+  .flexible{
+    display: flex;
+    &.row{ flex-direction: row;}
+    &.column{ flex-direction: column;}
+    .flexible-child{
+      flex-grow: 1;
+    }
+  }
+
+  .form-area{
+    padding: 20px;
+    table{
+      width: 100%;
+    }
+    th,td{
+      background-color: #f2f3f5;
+      padding: 10px 15px
+    }
+    th{
+      width: 200px;
+      text-align: left;
+      
+    }
+
+    .pt-control{margin-bottom: 0}
+  }
+}
