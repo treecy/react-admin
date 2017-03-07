@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {RadioGroup, Radio, Collapse} from '@blueprintjs/core';
+import {RadioGroup, Radio, Collapse, Checkbox} from '@blueprintjs/core';
 import {Popover, PopoverInteractionKind, Position} from "@blueprintjs/core";
 import {DateRangePicker} from "@blueprintjs/datetime";
 var moment = require('moment');
@@ -38,9 +38,11 @@ class LtvView extends React.Component {
     this.handleDateChange.bind(this);
     this.state = {
       search: {
-        customer_rank: 0,
+        customer_rank: "0",
         BuyDayStart: moment().subtract(6, 'days').toDate(),
         BuyDayEnd: moment().toDate(),
+        lastBuyDayStart: moment().subtract(6, 'days').toDate(),
+        lastBuyDayEnd: moment().toDate(),
       }
     }
   }
@@ -56,18 +58,67 @@ class LtvView extends React.Component {
     });
   }
 
-  handleDateChange(newDates){
+  handleDateChange(start,end,newDates){
     this.setState(prevState => {
-      let newState = {...prevState.search, BuyDayStart: newDates[0], BuyDayEnd: newDates[1]};
+      let newState = {...prevState.search, [start]: newDates[0], [end]: newDates[1]};
       return {
         search: newState
       }
     });
   }
 
+  renderRankDetail() {
+    const views = {
+      cpm: ['現役', '休眠', '離脱'],
+      cpmItem: ['初回購入', 'よちよち', 'こつこつ', '流行', '優良']
+    };
+    const search = this.state.search;
+    return (
+        <table>
+
+          {search.customer_rank == 1 ?
+              <tbody>
+              {views.cpm.map((item, i)=>
+                  <tr key={i}>
+                    <td>{item}</td>
+                    <td>{views.cpmItem.map((it, j)=> <Checkbox className="pt-inline" label={it} key={j} value={i*5+j}/>)}</td>
+                  </tr>
+              )}
+              </tbody>
+              :
+              <tbody>
+                <tr>
+                  <td>最終購入日</td>
+                  <td>
+                    <DateRangePop
+                        start={search.lastBuyDayStart}
+                        end={search.lastBuyDayEnd}
+                        handleChange={this.handleDateChange.bind(this, 'lastBuyDayStart', 'lastBuyDayEnd')} />
+                  </td>
+                </tr>
+                <tr>
+                  <td>購入回数</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>累計購買金額</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>経過期間</td>
+                  <td></td>
+                </tr>
+              </tbody>
+          }
+
+        </table>
+    )
+  }
+
   render() {
     const views = {
-      rank: ['全件', 'CPM', '個別']
+      rank: ['全件', 'CPM', '個別'],
+
     };
     const search = this.state.search;
     return (
@@ -80,10 +131,13 @@ class LtvView extends React.Component {
                 <th className="name">顧客ランク</th>
                 <td className="input-area">
                   <RadioGroup onChange={this.handleChange.bind(this,'customer_rank')} selectedValue={search.customer_rank}>
-                    {views.rank.map((item, i) => <Radio className="pt-inline" label={item} value={i} key={i}/>)}
+
+                    {views.rank.map((item, i) =>
+                        <Radio className="pt-inline" label={item} value={`${i}`} key={i}/>)
+                    }
                   </RadioGroup>
                   <Collapse isOpen={search.customer_rank > 0}>
-                    <div>test</div>
+                    {this.renderRankDetail()}
                   </Collapse>
                 </td>
               </tr>
@@ -91,7 +145,10 @@ class LtvView extends React.Component {
               <tr>
                 <th className="name">初回購入日</th>
                 <td className="input-area">
-                  <DateRangePop start={search.BuyDayStart} end={search.BuyDayEnd} handleChange={this.handleDateChange.bind(this)} />
+                  <DateRangePop
+                      start={search.BuyDayStart}
+                      end={search.BuyDayEnd}
+                      handleChange={this.handleDateChange.bind(this, 'BuyDayStart', 'BuyDayEnd')} />
                 </td>
               </tr>
               </tbody>
