@@ -14,7 +14,7 @@ class MainComponent extends React.Component {
         <section id="page">
           <Header />
           <NavMenu menus={menus}/>
-          <section id="main-conten">
+          <section id="main-content">
             { React.cloneElement(this.props.children, this.props) }
           </section>
         </section>

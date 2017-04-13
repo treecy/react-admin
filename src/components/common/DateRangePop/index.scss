@@ -1,0 +1,17 @@
+@import "~@blueprintjs/core/src/common/_colors.scss";
+.date-range-wrapper {
+  display: flex;
+
+  .range-shortcuts {
+    padding: 0 10px;
+    margin: 10px 0;
+    border-right: 1px solid rgba(16, 22, 26, 0.15);
+  }
+}
+
+.pt-datepicker {
+  .DayPicker-Day--today:not(.DayPicker-Day--selected-range):not(.DayPicker-Day--selected) {
+    background-color: $orange5;
+    color: #fff;
+  }
+}
