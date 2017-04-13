@@ -7,8 +7,6 @@ import Step1 from './Step1';
 class LtvView extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange.bind(this);
-    this.handleDateChange.bind(this);
     this.state = {
       search: {
         customer_rank: "0",
@@ -21,7 +19,7 @@ class LtvView extends React.Component {
   }
 
   //可通用的 普通表单 change 的回调
-  handleChange(name, event) {
+  handleChange = (name, event) => {
     let newValue = event.target.value;
     this.setState(prevState => {
       let newState = {...prevState.search, [name]: newValue};
@@ -31,7 +29,7 @@ class LtvView extends React.Component {
     });
   }
 
-  handleDateChange(start,end,newDates){
+  handleDateChange = (start,end,newDates) => {
     this.setState(prevState => {
       let newState = {...prevState.search, [start]: newDates[0], [end]: newDates[1]};
       return {
@@ -40,18 +38,20 @@ class LtvView extends React.Component {
     });
   }
 
-
+  handleSubmit = () => {
+    console.log(this.state.search);
+  }
 
   render() {
-
-    const search = this.state.search;
+    let {search, handleDateChange,handleChange} = {...this.state, ...this};
+    let subCompProps = { search, handleDateChange, handleChange};
     return (
         <div className="content">
           <h2 className="page-title">LTV分析レポート</h2>
           <div className="form-area">
-            <Step1 search={search} handleDateChange={this.handleDateChange.bind(this)} handleChange={this.handleChange.bind(this)}/>
+            <Step1 {...subCompProps}/>
           </div>
-
+          <button type="button" className="pt-button" onClick={this.handleSubmit}>提交</button>
         </div>
 
     );

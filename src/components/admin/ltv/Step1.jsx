@@ -5,13 +5,17 @@ import DateRangePop from 'components/common/DateRangePop';
 const dateFormat = 'YYYY-MM-DD';
 
 class Step1 extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.handleChange = this.props.handleChange;
+    this.handleDateChange = this.props.handleDateChange;
+  }
   renderRankDetail() {
     const views = {
       cpm: ['現役', '休眠', '離脱'],
       cpmItem: ['初回購入', 'よちよち', 'こつこつ', '流行', '優良']
     };
-    const search = this.state.search;
+    let search = this.props.search;
     return (
         <table>
 
@@ -20,7 +24,11 @@ class Step1 extends React.Component {
               {views.cpm.map((item, i)=>
                   <tr key={i}>
                     <td>{item}</td>
-                    <td>{views.cpmItem.map((it, j)=> <Checkbox className="pt-inline" label={it} key={j} value={i*5+j}/>)}</td>
+                    <td>
+                      {views.cpmItem.map((it, j)=>
+                        <Checkbox className="pt-inline" label={it} key={j} value={i*5+j}/>
+                      )}
+                    </td>
                   </tr>
               )}
               </tbody>
@@ -59,6 +67,7 @@ class Step1 extends React.Component {
     const views = {
       rank: ['全件', 'CPM', '個別'],
     };
+    let search = this.props.search;
     return (
         <table>
           <tbody>
@@ -68,7 +77,7 @@ class Step1 extends React.Component {
               <RadioGroup onChange={this.handleChange.bind(this,'customer_rank')} selectedValue={search.customer_rank}>
 
                 {views.rank.map((item, i) =>
-                    <Radio className="pt-inline" label={item} value={`${i}`} key={i}/>)
+                    <Radio className="pt-inline" label={item} value={`${i}`} key={i}></Radio>)
                 }
               </RadioGroup>
               <Collapse isOpen={search.customer_rank > 0}>

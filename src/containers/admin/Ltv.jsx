@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LtvView from 'components/admin/LtvView';
+import LtvView from 'components/admin/ltv/LtvView';
 
 /**
  * 对于这个容器组件，由于该页面只进行数据展示，不进行数据修改，所以暂时不需要使用store
