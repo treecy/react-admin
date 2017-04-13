@@ -21,7 +21,7 @@ module.exports = {
 
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx','scss'],
     alias: {
       components: path.join(__dirname, '../src/components'),
     },
@@ -55,6 +55,10 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file?name=assets/img/[name].[hash].[ext]'
+      },
+      {
+        test: /\.css$/,
+        loaders: ["style-loader", 'css?sourceMap']
       }]
   },
 

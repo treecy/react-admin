@@ -20,6 +20,9 @@ module.exports = webpackMerge(commonConfig, {
       rewrites: [
         {from: /^\/view/, to: '/'}
       ]
+    },
+    proxy: {
+      '/report': {target: '/test/report.json'}
     }
   },
 
