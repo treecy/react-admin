@@ -1,12 +1,12 @@
-This is a collection of simple demos of React.js.
+## Related Projects
+- [Flux Demo](https://github.com/ruanyf/extremely-simple-flux-demo)
 
-These demos are purposely written in a simple and clear style. You will find no difficulty in following them to learn the powerful library.
 
 ## Related Projects
 
-- [Flux Demo](https://github.com/ruanyf/extremely-simple-flux-demo)
-- [Webpack Demos](https://github.com/ruanyf/webpack-demos)
-- [React Router Tutorial](https://github.com/reactjs/react-router-tutorial)
+- [blueprintjs](http://blueprintjs.com/) 一个组件非常丰富的库
+- [react-table.js](https://react-table.js.org/) 功能强大的 table 库
+- [axios](https://github.com/mzabriskie/axios) 跨浏览器 promise-ajax 请求库
 - [CSS Modules Demos](https://github.com/ruanyf/css-modules-demos)
 - [React Testing Demo](https://github.com/ruanyf/react-testing-demo)
 - [A boilerplate for React-Babel-Webpack project](https://github.com/ruanyf/react-babel-webpack-boilerplate)

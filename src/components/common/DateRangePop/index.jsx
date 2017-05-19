@@ -7,6 +7,20 @@ import "./index.scss";
 var moment = require('moment');
 
 export default class DateRangePop extends React.Component {
+
+  static propTypes = {
+    start: React.PropTypes.instanceOf(Date).isRequired,
+    end: React.PropTypes.instanceOf(Date).isRequired,
+    handleChange: React.PropTypes.func,
+    dateFormat: React.PropTypes.string,
+    pos: React.PropTypes.number
+  }
+
+  static defaultProps= {
+    dateFormat: 'YYYY-MM-DD',
+    pos: Position.BOTTOM_LEFT
+  }
+
   constructor(props) {
     super(props);
     this._dateFormat = this.props.dateFormat;
@@ -76,19 +90,6 @@ export default class DateRangePop extends React.Component {
     );
   }
 }
-
-DateRangePop.propTypes = {
-  start: React.PropTypes.instanceOf(Date).isRequired,
-  end: React.PropTypes.instanceOf(Date).isRequired,
-  handleChange: React.PropTypes.func,
-  dateFormat: React.PropTypes.string,
-  pos: React.PropTypes.number
-};
-
-DateRangePop.defaultProps = {
-  dateFormat: 'YYYY-MM-DD',
-  pos: Position.BOTTOM_LEFT
-};
 
 let Pos = {...Position}
 export {Pos as Position}
